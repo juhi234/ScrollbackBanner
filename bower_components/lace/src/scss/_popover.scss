@@ -1,0 +1,190 @@
+@import "functions";
+@import "global";
+@import "animations";
+@import "dropshadow";
+
+@include exports("popover") {
+    %popover-arrow {
+        position: absolute;
+        display: block;
+        content: "";
+        height: 14px;
+        width: 14px;
+        background-color: transparent;
+        border-style: solid;
+        border-width: 1px 0 0 1px;
+        z-index: 800;
+    }
+
+    .popover {
+        @include fadein(.3s ease);
+        @include dropshadow(4);
+
+        position: absolute;
+        display: block;
+        width: 15em;
+        margin: .5em;
+        border-radius: $roundness;
+        font-weight: normal;
+        border: 1px solid rgba(0, 0, 0, .1);
+        background-color: $light-color;
+        color: $dark-color;
+        text-transform: none;
+        z-index: 900;
+
+        &:before {
+            @extend %popover-arrow;
+
+            background-image: linear-gradient(135deg, $light-color 60%, $light-color 60%, transparent 60%);
+            border-color: rgba(0, 0, 0, .1);
+        }
+
+        $types: (
+            info: $info-color,
+            success: $success-color,
+            warning: $warning-color,
+            error: $error-color
+        );
+
+        @each $type, $color in $types {
+            &.#{$type} {
+                background-color: $color;
+                color: $light-color;
+                border-color: $color;
+
+                &:before {
+                    background-image: linear-gradient(135deg, $color 60%, $info-color 60%, transparent 60%);
+                    border-color: $color;
+                }
+            }
+        }
+
+        &-top {
+            &:before {
+                @include transform(rotate(225deg));
+
+                bottom: -8px;
+            }
+        }
+
+        &-left {
+            &:before {
+                @include transform(rotate(135deg));
+
+                right: -8px;
+            }
+        }
+
+        &-bottom {
+            &:before {
+                @include transform(rotate(45deg));
+
+                top: -8px;
+            }
+        }
+
+        &-right {
+            &:before {
+                @include transform(rotate(315deg));
+
+                left: -8px;
+            }
+        }
+
+        &.arrow-x {
+            &:before {
+                left: 50%;
+                margin-left: -8px;
+            }
+
+            &.arrow-left {
+                &:before {
+                    left: 1em;
+                    right: auto;
+                }
+            }
+
+            &.arrow-right {
+                &:before {
+                    left: auto;
+                    right: 1em;
+                }
+            }
+        }
+
+        &.arrow-y {
+            &:before {
+                top: 50%;
+                margin-top: -8px;
+            }
+
+            &.arrow-top {
+                &:before {
+                    top: 1em;
+                    bottom: auto;
+                }
+            }
+
+            &.arrow-bottom {
+                &:before {
+                    top: auto;
+                    bottom: 1em;
+                }
+            }
+        }
+
+        &.arrow-none {
+            &:before { display: none; }
+
+            &.popover-top { margin-bottom: -8px; }
+
+            &.popover-left { margin-right: -8px; }
+
+            &.popover-bottom { margin-top: -8px; }
+
+            &.popover-right { margin-left: -8px; }
+        }
+
+        &-section {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+            &:only-of-type, &:last-of-type { border-bottom: 0; }
+        }
+
+        &-title {
+            padding: 1em;
+            font-weight: 700;
+        }
+
+        &-buttons {
+            padding: 1em;
+
+            .button { width: 100%; }
+        }
+
+        &-content { padding: 1em; }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+            &:only-child, &:last-child { border-bottom: 0; }
+
+            a {
+                display: block;
+                padding: 1em;
+                font-weight: 700;
+                color: $dark-color;
+
+                &:hover, &:focus {background-color: rgba(0, 0, 0, .05); }
+
+                &:active { background-color: rgba(0, 0, 0, .075); }
+            }
+        }
+    }
+}

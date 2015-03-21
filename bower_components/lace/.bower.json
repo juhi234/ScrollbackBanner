@@ -1,0 +1,45 @@
+{
+  "name": "Lace",
+  "version": "0.1.7",
+  "homepage": "https://github.com/scrollback/lace",
+  "authors": [
+    "Satyajit Sahoo <satya@scrollback.io>"
+  ],
+  "description": "A collection of jquery plugins and stylesheets",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "framework",
+    "jquery",
+    "plugin"
+  ],
+  "license": "GPL",
+  "main": "src/js/jquery.lace.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "gulpfile.js"
+  ],
+  "dependencies": {
+    "jquery": "1",
+    "velocity": "~1.2.1"
+  },
+  "devDependencies": {
+    "qunit": "~1.16.0"
+  },
+  "_release": "0.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.7",
+    "commit": "c6a1d6fd2d8e2984881f602f5d7e0392cc9e34cb"
+  },
+  "_source": "git://github.com/scrollback/lace.git",
+  "_target": "~0.1.7",
+  "_originalSource": "lace",
+  "_direct": true
+}

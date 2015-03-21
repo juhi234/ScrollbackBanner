@@ -1,0 +1,97 @@
+@import "functions";
+@import "global";
+@import "animations";
+@import "entry";
+@import "icons";
+@import "grid";
+
+
+/**
+ * Multientry:
+ * Multientry can be used to input multiple words.
+ *
+ * The markup can be created with the jquery plugin,
+ *
+ * ```
+ * $.multientry("create")
+ * ```
+ *
+ * Multientry supports the following methods,
+ * - add - add an item
+ * - remove - remove an item
+ * - items - get list of items
+ *
+ *     @example
+ *     div.multientry
+ *         span.multientry-item.multientry-segment
+ *             span.multientry-segment-text hello
+ *             span.multientry-segment-remove
+ *         span.multientry-item.multientry-segment
+ *             span.multientry-segment-text world
+ *             span.multientry-segment-remove
+ *         span(contenteditable="true").multientry-item.multientry-input
+ *
+ */
+
+@include exports("multientry") {
+    .multientry {
+        @extend %entry;
+        @extend %clearfix;
+
+        display: inline-block;
+        min-height: 2.5em;
+        min-width: 15em;
+        max-width: 100%;
+        margin: .5em 0;
+        padding: 0 .0625em;
+        cursor: text; /* fix firefox showing caret in wrong position */
+
+        &-item {
+            float: left;
+            max-width: 100%;
+            margin: .125em .0625em;
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        &-input {
+            background: none;
+            min-width: 3em;
+            padding: 0 .25em;
+            line-height: 2em;
+
+            &:only-child { width: 100%; }
+        }
+
+        &-segment {
+            border-radius: $roundness;
+            background-color: $accent-color;
+            color: $light-color;
+
+            &-text {
+                padding: 0 .75em;
+                line-height: 2em;
+            }
+
+            &-remove {
+                @extend %snappy;
+                @include icon(close);
+
+                float: right;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, .1);
+                border-radius: 0 $roundness $roundness 0;
+
+                &:focus, &:hover { background-color: rgba(0, 0, 0, .2); }
+
+                &:active { background-color: rgba(0, 0, 0, .3); }
+
+                &:before {
+                    display: block;
+                    font-weight: 700;
+                    padding: .5em;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+/**
+ * Filter:
+ * Show hide elements based on state.
+ *
+ * The mixin takes a map containing list of various states as argument.
+ * Second optional argument can be a list of states which can have multiple values at same time.
+ *
+ * ```
+ * @include filter((
+ *      role: ( user, guest ),
+ *      mode: ( normal, discussion )
+ * ));
+ * ```
+ */
+
+
+@mixin filter($map, $multi: ()) {
+    @each $filter, $states in $map {
+        @each $state in $states {
+            $selector: unquote(".#{$filter}-#{$state}");
+
+            @if (index($multi, $filter) != null) {
+                &:not(#{$selector}) {
+                    [data-#{$filter}=#{$state}] { display: none; }
+                }
+            } @else {
+                &#{$selector} {
+                    [data-#{$filter}]:not([data-#{$filter}~=#{$state}]) { display: none; }
+                }
+            }
+        }
+
+        $selector: unquote("[class*=#{$filter}-]");
+
+        &#{$selector} {
+            [data-#{$filter}=none] { display: none; }
+        }
+
+        &:not(#{$selector}) {
+            [data-#{$filter}]:not([data-#{$filter}=none]) { display: none; }
+        }
+    }
+}

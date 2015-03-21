@@ -1,0 +1,50 @@
+{
+  "name": "Lace",
+  "version": "0.1.7",
+  "description": "A collection of jquery plugins and stylesheets",
+  "keywords": [
+    "framework",
+    "jquery",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "path": "git://github.com/scrollback/lace.git"
+  },
+  "author": "Satyajit Sahoo <satya@scrollback.io>",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/scrollback/lace/issues"
+  },
+  "homepage": "https://github.com/scrollback/lace",
+  "devDependencies": {
+    "bower": "latest",
+    "browserify": "latest",
+    "del": "latest",
+    "event-stream": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-browserify": "latest",
+    "gulp-bump": "latest",
+    "gulp-combine-mq": "latest",
+    "gulp-concat": "latest",
+    "gulp-git": "latest",
+    "gulp-gitmodified": "latest",
+    "gulp-jscs": "latest",
+    "gulp-jshint": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-notify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "gulp-sass-bulk-import": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-styledown": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "jshint-stylish": "latest",
+    "node-qunit-phantomjs": "latest",
+    "vinyl-buffer": "latest",
+    "vinyl-source-stream": "latest"
+  }
+}
